@@ -1,6 +1,6 @@
 package br.com.value.projects.dominio;
 
-public class Resultado {
+public class Resultado implements Comparable<Resultado> {
 
 	private Participante participante;
 	private double metrica;
@@ -17,6 +17,13 @@ public class Resultado {
 	public double getMetrica() {
 		return metrica;
 	}
+	
+	public int compareTo(Resultado r) {
+		if(r.getMetrica() > this.getMetrica()) return 1;
+		if(r.getMetrica() < this.getMetrica()) return -1;
+		return 0;
+	}
+
 	
 	
 	

@@ -22,6 +22,13 @@ public class Jogo {
 		
 		
 	}
+	
+	public List<Resultado> getColocacoes(){
+		List<Resultado> sorted = this.resultados;
+		Collections.sort(sorted);
+		return sorted;
+		
+	}
 
 	private int ultimoResultadoVisto() {
 		return resultados.size()-1;

@@ -2,8 +2,11 @@ package br.com.value.projects.service;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import java.util.Arrays;
+import java.util.List;
 
+import org.junit.Test;
+import static org.hamcrest.CoreMatchers.*;
 import br.com.value.projects.builder.CriadorDeJogo;
 import br.com.value.projects.dominio.Jogo;
 import br.com.value.projects.dominio.Participante;
@@ -55,11 +58,50 @@ public class JogoTeste {
 		}
 	
 	
+	//Tarefa 2 (AC1): Teste de Unidade - Estudo de Caso - Gestão de Jogos
 	
-	//Entrega 2
+	//todo: 1) Equipe faz UM caso de teste e entrega
+	
+	//2) Cada integrante da equipe sugere um caso de teste e implementa 
+	
+	
+	//renato Aurélio Fernandes Totti
+	//Qual seria um caso de teste para identificar todas as colocações do jogo, começando pelo primeiro colocado (vencedor)?
+	@Test
+	public void deveClassificarJogadores() {
+		Jogo jogo = new Jogo("Futebol");
+		
+		Participante thiago = new Participante("thiago");
+		Participante renato = new Participante("renato");
+		Participante leticia = new Participante("leticia");
+		
+		List<Resultado> shouldBeThis = Arrays.asList(new Resultado[] {new Resultado(renato,800.0),new Resultado(thiago,500.0),new Resultado(leticia,200.0)});
+		
+		jogo.anota(new Resultado(thiago,500.0));
+		jogo.anota(new Resultado(renato,800.0));
+		jogo.anota(new Resultado(leticia,200.0));
+		List<Resultado> willBeThis=jogo.getColocacoes();
+		//assertThat(willBeThis.toArray(),hasItems(shouldBeThis.toArray()));
+	}
+	
+	
+	//Tarefa 3 (AC1): Aprendendo TDD
 	@Test
 	public void calculoDeMedia() {
+		/*Classe de quivalencia: média deve ser >0 para qualquer entrada positiva*/
+		Jogo jogo = new Jogo("Futebol");
 		
+		Participante thiago = new Participante("thiago");
+		Participante renato = new Participante("renato");
+		Participante leticia = new Participante("leticia");
+		
+		
+		jogo.anota(new Resultado(thiago,500.0));
+		jogo.anota(new Resultado(renato,800.0));
+		jogo.anota(new Resultado(leticia,200.0));
+		
+		assertEquals(1366,jogo.getMedia(),0.6);
+
 	}
 
 }
