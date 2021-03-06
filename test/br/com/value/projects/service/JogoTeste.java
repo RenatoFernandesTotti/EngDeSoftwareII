@@ -81,9 +81,29 @@ public class JogoTeste {
 		jogo.anota(new Resultado(renato,800.0));
 		jogo.anota(new Resultado(leticia,200.0));
 		List<Resultado> willBeThis=jogo.getColocacoes();
+		assertEquals(shouldBeThis.toArray().length, willBeThis.toArray().length);
+		for(int i = 0; i < shouldBeThis.toArray().length; i++ ) {
+			assertEquals(shouldBeThis.get(i).getMetrica(), willBeThis.get(i).getMetrica(), 0.00001);
+		}
 		//assertThat(willBeThis.toArray(),hasItems(shouldBeThis.toArray()));
 	}
 	
+	
+	//Giovanne Prestes Dias
+	//Qual seria um caso de teste para identificar se os resultados não são negativos?
+	@Test
+	public void naoDeveTerResultadoNegativo() {
+		Jogo jogo = new CriadorDeJogo()
+		        .para("Volei")
+		        .resultado(new Participante("thiago"), 500.0)
+		        .resultado(new Participante("giovanne"), -350.0)
+		        .constroi();
+		
+		assertEquals(true, jogo.getResultados().get(0).getMetrica() >= 0);
+		assertEquals(false, jogo.getResultados().get(1).getMetrica() >= 0);
+		
+		
+	}
 	
 	//Tarefa 3 (AC1): Aprendendo TDD
 	@Test
