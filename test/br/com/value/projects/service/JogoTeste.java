@@ -65,7 +65,7 @@ public class JogoTeste {
 	//2) Cada integrante da equipe sugere um caso de teste e implementa 
 	
 	
-	//renato Aurélio Fernandes Totti
+	//renato Aurélio Fernandes Totti - 171586
 	//Qual seria um caso de teste para identificar todas as colocações do jogo, começando pelo primeiro colocado (vencedor)?
 	@Test
 	public void deveClassificarJogadores() {
@@ -85,10 +85,9 @@ public class JogoTeste {
 		for(int i = 0; i < shouldBeThis.toArray().length; i++ ) {
 			assertEquals(shouldBeThis.get(i).getMetrica(), willBeThis.get(i).getMetrica(), 0.00001);
 		}
-		//assertThat(willBeThis.toArray(),hasItems(shouldBeThis.toArray()));
 	}
 	
-	///Thiago Pereira Correa
+	///Thiago Pereira Correa - 171085
 	/// O jogo deve ter sido criado
 	@Test
 	public void oJogoDeveTerSidoCriado() {
@@ -99,7 +98,7 @@ public class JogoTeste {
 	}
 	
 	
-	//Giovanne Prestes Dias
+	//Giovanne Prestes Dias - 171029
 	//Qual seria um caso de teste para identificar se os resultados não são negativos?
 	@Test
 	public void naoDeveTerResultadoNegativo() {
@@ -114,6 +113,22 @@ public class JogoTeste {
 		
 		
 	}
+	
+    //Letícia Vigna Modenese Silva - 171869
+	// O jogo deve ter mais de um participante.
+	@Test
+    public void deveTerJogoComVariosParticipantes() {
+        // Cria jogo
+        Jogo jogo = new Jogo("Uno");
+
+        // Cria e adiciona 3 participantes ao jogo
+        jogo.anota(new Resultado(new Participante("Letícia"), 4));
+        jogo.anota(new Resultado(new Participante("Fabiana"), 16));
+        jogo.anota(new Resultado(new Participante("Jamile"), 64));
+
+        // Verifica se jogo possui mais de um participante
+        assertEquals(true, jogo.getResultados().size() > 1);
+    }
 	
 	//Tarefa 3 (AC1): Aprendendo TDD
 	@Test
