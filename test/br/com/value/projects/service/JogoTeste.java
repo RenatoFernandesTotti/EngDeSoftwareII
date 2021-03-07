@@ -84,6 +84,16 @@ public class JogoTeste {
 		//assertThat(willBeThis.toArray(),hasItems(shouldBeThis.toArray()));
 	}
 	
+	///Thiago Pereira Correa
+	/// O jogo deve ter sido criado
+	@Test
+	public void oJogoDeveTerSidoCriado() {
+		Jogo jogo = null;
+		assertEquals(true,!(jogo instanceof Jogo));
+		jogo = new Jogo("Futebol");
+		assertEquals(true,jogo instanceof Jogo);
+	}
+	
 	
 	//Tarefa 3 (AC1): Aprendendo TDD
 	@Test
