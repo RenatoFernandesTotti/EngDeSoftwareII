@@ -97,6 +97,28 @@ public class JogoTeste {
 		assertEquals(true,jogo instanceof Jogo);
 	}
 	
+	//Gustavo Motta Tranche - 171071
+	//Qual deve ser o teste para dois participantes iguais
+	@Test
+	public void deveTerDoisParticipantesIguais() {
+		Participante participante1 = new Participante("thiago");
+		Participante participante2 = new Participante("thiago");
+		
+		assertTrue(participante1.equals(participante2));
+	}
+	
+	//Lucas Souza - 171114
+	//Deve jogar e retornar o vencedor
+	@Test
+	public void deveSerResultadosIguais() {
+		CriadorDeJogo jogo = new CriadorDeJogo().para("Cata moedas")
+				.resultado(new Participante(1,"Nelson"), 150.0)
+		        .resultado(new Participante(2,"Pedro"), 200.0);
+		Participante vencedor = jogo.joga();
+		
+		assertTrue(vencedor.equals(new Participante(2,"Pedro")));
+	}
+	
 	
 	//Giovanne Prestes Dias - 171029
 	//Qual seria um caso de teste para identificar se os resultados não são negativos?
