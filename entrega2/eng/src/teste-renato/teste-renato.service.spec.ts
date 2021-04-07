@@ -27,4 +27,24 @@ describe('TesteRenatoService', () => {
     expect(curso.terminado).toBeTruthy();
     expect(curso.media).toBeGreaterThan(7);
   });
+
+  it('alunoComVoucherPodeSerAlocado', () => {
+    const aluno = service.findAluno();
+    expect(aluno.pagante).toBeTruthy();
+    const cursos = service.getCursos(aluno);
+    expect(cursos.length).toBeGreaterThanOrEqual(12);
+    service.receberVoucher(aluno);
+    expect(aluno.voucher).toBeDefined();
+    expect(service.podeSerAlocado(aluno)).toBeTruthy();
+  });
+
+  it('alunoSeraPremiumCom12Cursos', () => {
+    const aluno = service.findAluno();
+    expect(aluno.pagante).toBeTruthy();
+    const cursos = service.getCursos(aluno);
+    expect(cursos.length).toBeGreaterThanOrEqual(12);
+    expect(aluno.premium).toBeFalsy();
+    service.tornarPremium(aluno);
+    expect(aluno.premium).toBeTruthy();
+  });
 });
