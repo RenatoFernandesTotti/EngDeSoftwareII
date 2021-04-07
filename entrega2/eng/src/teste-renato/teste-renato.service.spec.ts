@@ -19,4 +19,12 @@ describe('TesteRenatoService', () => {
 
     expect(alunoup.cursos[0]).toStrictEqual({ nome: 'jest', preco: 50 });
   });
+
+  it('alunoTerminaCursoMediaMaior7', () => {
+    const aluno = service.findAluno();
+    const curso = service.getCursoTerminado(aluno, 'Xamarin');
+
+    expect(curso.terminado).toBeTruthy();
+    expect(curso.media).toBeGreaterThan(7);
+  });
 });
