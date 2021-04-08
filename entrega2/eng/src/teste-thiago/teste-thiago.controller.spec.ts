@@ -13,8 +13,4 @@ describe('TesteThiagoController', () => {
 
     controller = module.get<TesteThiagoController>(TesteThiagoController);
   });
-
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
 });
