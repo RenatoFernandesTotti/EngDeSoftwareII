@@ -11,7 +11,7 @@ describe('TesteThiagoService', () => {
 
     service = module.get<TesteThiagoService>(TesteThiagoService);
   });
-
+ // Thiago Pereira Correa - 171085
   it('usaCartaoParaAssinarCurso', () => {
     const aluno = service.findAluno();
     const curso = 'ASP.NET';
